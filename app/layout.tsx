@@ -1,10 +1,12 @@
-import Navbar from "@/components/navbar";
 import type { Metadata } from "next";
 import { DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const dmSans = DM_Sans({ variable: "--font-primary", subsets: ["latin"] });
-const jetBrainsMono = JetBrains_Mono({variable: "--font-secondary", subsets: ["latin"] });
+const jetBrainsMono = JetBrains_Mono({
+  variable: "--font-secondary",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "7NFTix - The NFT Ticketing Platform",
@@ -18,8 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Navbar />
-      <body className={`${dmSans.className} ${jetBrainsMono.className}`}>
+      {/* <Header /> */}
+      <body
+        className={`${jetBrainsMono.className} ${dmSans.className} font-primary`}
+      >
         {children}
       </body>
     </html>
