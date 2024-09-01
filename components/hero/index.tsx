@@ -1,43 +1,59 @@
+import bottom from "@/assets/bottom.png";
 import gridLines from "@/assets/grid-lines.png";
+import left from "@/assets/left.png";
+import right from "@/assets/right.png";
+import top from "@/assets/top.png";
+import Image from "next/image";
+import { Button } from "../ui/button";
 
 export default function Hero() {
   return (
     <section>
-      {/* <div className="absolute inset-0 bg-[radial-gradient(75%_75%_at_center_center,rgb(140,69,255,.5)_15%,rgb(14,0,36,.5)_78%,transparent)]" /> */}
-      {/* <div
-            className="absolute inset-0 bg-[rgb(74,32,138)] bg-blend-overlay [mask-image:radial-gradient(50%_50%_at_50%_35%,black,transparent)] group-hover:opacity-0 transition duration-700"
-            style={{
-            //   backgroundImage: `url(${gridLines.src})`,
-            }}
-          /> */}
-
-      <div className="relative overflow-hidden h-screen flex items-center justify-center text-center text-white">
+      <div className="relative overflow-hidden h-[400px] md:h-[650px] w-full flex items-center justify-center text-center text-white">
         <div
-          className="absolute inset-0 bg-[rgba(3,0,12,0.9)] bg-blend-overlay [mask-image:radial-gradient(50%_50%_at_50%_35%,black,transparent)] group-hover:opacity-0 transition duration-700"
+          className="absolute inset-0 bg-[rgba(3,0,12,0.9)] bg-blend-overlay [mask-image:radial-gradient(80%_80%_at_50%_35%,black,transparent)]"
           style={{
             backgroundImage: `url(${gridLines.src})`,
           }}
         />
-        <div className="absolute inset-0 grid grid-cols-3 gap-4 opacity-20">
-          {/* Background images */}
-          <div className="h-full w-full bg-cover bg-center bg-image-1"></div>
-          <div className="h-full w-full bg-cover bg-center bg-image-2"></div>
-          <div className="h-full w-full bg-cover bg-center bg-image-3"></div>
-          <div className="h-full w-full bg-cover bg-center bg-image-4"></div>
-          <div className="h-full w-full bg-cover bg-center bg-image-5"></div>
-          <div className="h-full w-full bg-cover bg-center bg-image-6"></div>
+
+        <div className="absolute inset-0 grid grid-cols-3 -z-10 gap-4 max-w-7xl mx-auto">
+          <Image
+            src={top}
+            alt="Top image"
+            className="absolute -top-10 left-1/2 transform -translate-x-1/2"
+            style={{ width: "auto", height: "auto" }}
+          />
+          <Image
+            src={left}
+            alt="Left image"
+            className="absolute top-10 left-12 transform -rotate-6"
+            style={{ width: "auto", height: "auto" }}
+          />
+          <Image
+            src={bottom}
+            alt="Bottom image"
+            className="absolute -bottom-10 left-1/2 transform -translate-x-1/2"
+            style={{ width: "auto", height: "auto" }}
+          />
+          <Image
+            src={right}
+            alt="Right image"
+            className="absolute top-1/2 right-12 transform -translate-y-1/2"
+            style={{ width: "auto", height: "auto" }}
+          />
         </div>
-        <div className="relative z-10 max-w-xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+        <div className="relative z-10 max-w-2xl mx-auto">
+          <h1 className="text-4xl md:text-5xl lg:text-[52px] font-bold mb-4">
             Discover, and Collect digital Art NFTs
           </h1>
           <p className="mb-8 text-lg md:text-xl">
             Digital marketplace for crypto collectibles and non-fungible tokens
             (NFTs). Buy, Sell, and discover exclusive digital assets.
           </p>
-          <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-full text-white font-semibold">
+          <Button className="text-white border border-blue-400 bg-[#002034]">
             Explore Collections
-          </button>
+          </Button>
         </div>
       </div>
     </section>
