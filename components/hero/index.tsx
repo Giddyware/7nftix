@@ -22,25 +22,21 @@ export default function Hero() {
             src={top}
             alt="Top image"
             className="absolute -top-10 left-1/2 transform -translate-x-1/2"
-            style={{ width: "auto", height: "auto" }}
           />
           <Image
             src={left}
             alt="Left image"
-            className="absolute top-10 left-12 transform -rotate-6"
-            style={{ width: "auto", height: "auto" }}
+            className="absolute top-1/2 left-12 transform -translate-y-1/2"
           />
           <Image
             src={bottom}
             alt="Bottom image"
             className="absolute -bottom-10 left-1/2 transform -translate-x-1/2"
-            style={{ width: "auto", height: "auto" }}
           />
           <Image
             src={right}
             alt="Right image"
             className="absolute top-1/2 right-12 transform -translate-y-1/2"
-            style={{ width: "auto", height: "auto" }}
           />
         </div>
         <div className="relative z-10 max-w-2xl mx-auto">
