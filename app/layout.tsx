@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       {/* <Header /> */}
       <body
-        className={`${jetBrainsMono.className} ${dmSans.className} font-primary`}
+        className={`${jetBrainsMono.className} ${dmSans.className} font-primary bg-[#03000C]`}
       >
         {children}
       </body>
