@@ -6,11 +6,12 @@ import auctionImage5 from "@/assets/auctions/auction-5.png";
 import auctionImage6 from "@/assets/auctions/auction-6.png";
 import auctionImage7 from "@/assets/auctions/auction-7.png";
 import auctionImage8 from "@/assets/auctions/auction-8.png";
+import { StaticImageData } from "next/image";
 
 interface AuctionCardProps {
   id: number;
   title: string;
-  image: string;
+  image: StaticImageData;
   currentBid: number;
   timeLeft: string;
   category: string;
