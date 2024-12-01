@@ -2,6 +2,7 @@ import Header from "@/components/header";
 import Hero from "@/components/hero";
 import LiveAuctions from "@/components/live-auctions";
 import SponsorLogos from "@/components/sponsor-logos";
+import TrendingNfts from "@/components/trending-nfts";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Hero />
       <SponsorLogos />
       <LiveAuctions />
+      <TrendingNfts />
     </>
   );
 }

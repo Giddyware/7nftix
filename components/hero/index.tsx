@@ -4,7 +4,7 @@ import left from "@/assets/left.png";
 import right from "@/assets/right.png";
 import top from "@/assets/top.png";
 import Image from "next/image";
-import { Button } from "../ui/button";
+import GradientButton from "../ui/gradient-button";
 
 export default function Hero() {
   return (
@@ -47,9 +47,8 @@ export default function Hero() {
             Digital marketplace for crypto collectibles and non-fungible tokens
             (NFTs). Buy, Sell, and discover exclusive digital assets.
           </p>
-          <Button className="text-white border border-blue-400 bg-[#002034]">
-            Explore Collections
-          </Button>
+
+          <GradientButton className="py-4">Explore Collections</GradientButton>
         </div>
       </div>
     </section>

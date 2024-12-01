@@ -1,5 +1,6 @@
+import GradientButton from "../ui/gradient-button";
 import AuctionCard from "./auction-card";
-import { auctionData } from "./data";
+import { auctionData } from "./auction-data";
 
 export default function LiveAuctions() {
   return (
@@ -10,12 +11,14 @@ export default function LiveAuctions() {
           style={{
             borderImageSource:
               "linear-gradient(270.01deg, rgb(12, 4, 28) -0.31%, #005686 19.69%, #1A135F 49.69%, #005686 79.68%, #0C041C 99.68%)",
-
             borderImageSlice: 1,
           }}
         >
           Live Auctions
         </h2>
+        <h3 className="text-white font-bold text-center text-[44px] mb-14">
+          Trending Auctions
+        </h3>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {auctionData.map((auction) => (
             <AuctionCard
@@ -26,6 +29,9 @@ export default function LiveAuctions() {
               timeLeft={auction.timeLeft}
             />
           ))}
+        </div>
+        <div className="mt-8 text-center">
+          <GradientButton>View More</GradientButton>
         </div>
       </div>
     </section>
