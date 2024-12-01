@@ -1,6 +1,6 @@
 import GradientButton from "../ui/gradient-button";
 import AuctionCard from "./auction-card";
-import { auctionData } from "./data";
+import { auctionData } from "./auction-data";
 
 export default function LiveAuctions() {
   return (
@@ -16,6 +16,9 @@ export default function LiveAuctions() {
         >
           Live Auctions
         </h2>
+        <h3 className="text-white font-bold text-center text-[44px] mb-14">
+          Trending Auctions
+        </h3>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {auctionData.map((auction) => (
             <AuctionCard
