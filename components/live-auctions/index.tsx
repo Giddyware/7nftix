@@ -1,3 +1,4 @@
+import GradientButton from "../ui/gradient-button";
 import AuctionCard from "./auction-card";
 import { auctionData } from "./data";
 
@@ -10,7 +11,6 @@ export default function LiveAuctions() {
           style={{
             borderImageSource:
               "linear-gradient(270.01deg, rgb(12, 4, 28) -0.31%, #005686 19.69%, #1A135F 49.69%, #005686 79.68%, #0C041C 99.68%)",
-
             borderImageSlice: 1,
           }}
         >
@@ -26,6 +26,9 @@ export default function LiveAuctions() {
               timeLeft={auction.timeLeft}
             />
           ))}
+        </div>
+        <div className="mt-8 text-center">
+          <GradientButton>View More</GradientButton>
         </div>
       </div>
     </section>
