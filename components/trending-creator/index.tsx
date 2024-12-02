@@ -1,7 +1,7 @@
-import CollectionCard from "./collection-card";
-import { collections } from "./data";
+import CreatorCard from "./creator-card";
+import { creators } from "./data";
 
-const PopulationCollection = () => {
+const TrendingCreator = () => {
   return (
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-4">
@@ -13,14 +13,15 @@ const PopulationCollection = () => {
             borderImageSlice: 1,
           }}
         >
-          Collections
+          Creators
         </h2>
         <h3 className="text-white font-bold text-center text-[44px] mb-14">
-          Popular Collections
+          Trending Creators
         </h3>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {collections.map((collection, index) => (
-            <CollectionCard key={index} {...collection} />
+          {creators.map((creator) => (
+            <CreatorCard key={creator.id} creator={creator} />
           ))}
         </div>
       </div>
@@ -28,4 +29,4 @@ const PopulationCollection = () => {
   );
 };
 
-export default PopulationCollection;
+export default TrendingCreator;
