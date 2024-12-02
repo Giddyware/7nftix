@@ -4,6 +4,7 @@ import HowItWorks from "@/components/how-it-works";
 import LiveAuctions from "@/components/live-auctions";
 import PopulationCollection from "@/components/popular-collection";
 import SponsorLogos from "@/components/sponsor-logos";
+import TrendingCreator from "@/components/trending-creator";
 import TrendingNfts from "@/components/trending-nfts";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <TrendingNfts />
       <HowItWorks />
       <PopulationCollection />
+      <TrendingCreator />
     </>
   );
 }
