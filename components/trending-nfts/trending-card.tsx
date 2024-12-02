@@ -14,6 +14,7 @@ interface TrendingCardProps {
     count: number;
     avatars: string[];
   };
+  filled?: boolean;
 }
 
 export default function TrendingNftCard({
@@ -24,6 +25,7 @@ export default function TrendingNftCard({
   category = "Art",
   owner,
   likes,
+  filled = false,
 }: TrendingCardProps) {
   return (
     <div
@@ -71,14 +73,15 @@ export default function TrendingNftCard({
 
           <div className="relative w-full h-[250px] rounded-2xl overflow-hidden">
             <Image src={image?.src} alt={title} fill className="object-cover" />
-            <div className="absolute top-3 right-3 bg-black/50 rounded-full px-3 py-1 flex items-center gap-1">
+            <div className="absolute group top-3 right-3 bg-black/50 rounded-full px-3 py-1 flex items-center gap-1">
               <span className="text-white text-xs">{likes.count}</span>
               <svg
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
-                fill="none"
+                fill={filled ? "white" : "none"}
                 stroke="white"
+                className="group-hover:opacity-80 transition-colors"
               >
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
               </svg>
