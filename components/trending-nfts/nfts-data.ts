@@ -24,6 +24,7 @@ interface TrendingNftProps {
     count: number;
     avatars: string[];
   };
+  filled?: boolean;
 }
 
 export const trendingData: TrendingNftProps[] = [
@@ -47,6 +48,7 @@ export const trendingData: TrendingNftProps[] = [
         "/avatars/like-2.png",
       ],
     },
+    filled: true,
   },
   {
     id: 2,
@@ -89,7 +91,9 @@ export const trendingData: TrendingNftProps[] = [
         "/avatars/like-3.png",
       ],
     },
+    filled: true,
   },
+
   {
     id: 4,
     title: "Froganas #3054",
@@ -152,6 +156,7 @@ export const trendingData: TrendingNftProps[] = [
         "/avatars/like-3.png",
       ],
     },
+    filled: true,
   },
   {
     id: 7,
@@ -173,6 +178,7 @@ export const trendingData: TrendingNftProps[] = [
         "/avatars/like-5.png",
       ],
     },
+    filled: true,
   },
   {
     id: 8,
