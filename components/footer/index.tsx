@@ -1,3 +1,7 @@
+import Link from "next/link";
+import { Discord } from "../icon/discord";
+import { Telegram } from "../icon/telegram";
+import { X } from "../icon/x";
 import { FOOTER_LEGAL_LINKS, FOOTER_SECTIONS } from "./constants";
 import { FooterSection } from "./footer-section";
 
@@ -17,6 +21,29 @@ const Footer = () => {
               7NFTix is a vibrant community of NFT enthusiasts, offering a
               secure platform to discover, buy, and sell unique digital assets.
             </p>
+            <div>
+              <Link
+                href="#"
+                className="text-white hover:text-gray-400 inline-block mt-4"
+              >
+                <span className="sr-only">Discord</span>
+                <Discord />
+              </Link>
+              <Link
+                href="#"
+                className="text-white hover:text-gray-400 inline-block mt-4 ml-4"
+              >
+                <span className="sr-only">Telegram</span>
+                <Telegram />
+              </Link>
+              <Link
+                href="#"
+                className="text-white hover:text-gray-400 inline-block mt-4 ml-4"
+              >
+                <span className="sr-only">Twitter</span>
+                <X />
+              </Link>
+            </div>
           </div>
 
           {/* Navigation Sections */}
