@@ -3,7 +3,7 @@
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button } from "../ui/button";
+import GradientButton from "../ui/gradient-button";
 
 type NavLink = {
   label: string;
@@ -13,9 +13,9 @@ type NavLink = {
 };
 
 const navLinks: NavLink[] = [
-  { label: "Marketplace", url: "/marketplace", isActive: true },
-  { label: "Artwork", url: "/artwork", hasDropdown: true },
-  { label: "Create", url: "/create" },
+  { label: "Marketplace", url: "#", isActive: true },
+  { label: "Artwork", url: "#", hasDropdown: true },
+  { label: "Create", url: "#" },
 ];
 
 export default function Header() {
@@ -32,12 +32,10 @@ export default function Header() {
               <Link
                 href={link.url}
                 className={`text-white font-primary ${
-                  pathname === "/" ? "" : ""
-                } ${
-                  link.url === "/marketplace"
-                    ? ""
-                    : "text-[14px] text-[#3f4253]"
-                } ${link.isActive && "font-bold"}`}
+                  pathname === "#" ? "" : ""
+                } ${link.url === "#" ? "" : "text-[14px] text-[#3f4253]"} ${
+                  link.isActive && "font-bold"
+                }`}
               >
                 {link.label}
               </Link>
@@ -46,9 +44,7 @@ export default function Header() {
         </ul>
       </nav>
       <div className="flex items-center gap-4">
-        <Button className="text-white border border-blue-400 bg-[#002034]">
-          Connect Wallet
-        </Button>
+        <GradientButton className="py-4"> Connect Wallet</GradientButton>
         <Menu className="h-6 w-6 md:hidden text-white/20" />
       </div>
     </header>
