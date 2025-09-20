@@ -1,18 +1,18 @@
 import { createConfig, http } from 'wagmi'
 import { base, mainnet, optimism, sepolia } from 'wagmi/chains'
-import { coinbaseWallet, injected } from 'wagmi/connectors'
+import { coinbaseWallet, injected, walletConnect } from 'wagmi/connectors'
 
-// Create a minimal Wagmi config with public RPCs
-export const wagmiConfig = createConfig({
-    chains: [mainnet, base, optimism, sepolia],
-    connectors: [
-        injected({ shimDisconnect: true }),
-        coinbaseWallet({ appName: '7NFTix' }),
-    ],
-    transports: {
-        [mainnet.id]: http(),
-        [base.id]: http(),
-        [optimism.id]: http(),
-        [sepolia.id]: http(),
-    },
-})
+export const chains = [mainnet, base, optimism, sepolia]
+
+export function getWagmiConfig() {
+    const wcProjectId = process.env.NEXT_PUBLIC_WC_PROJECT_ID
+    return createConfig({
+        chains,
+        connectors: [
+            injected({ shimDisconnect: true }),
+            coinbaseWallet({ appName: '7NFTix' }),
+            ...(wcProjectId ? [walletConnect({ projectId: wcProjectId, showQrModal: true })] : []),
+        ],
+        transports: Object.fromEntries(chains.map((c) => [c.id, http()])),
+    })
+}
