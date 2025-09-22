@@ -1,3 +1,4 @@
+import Providers from "@/components/providers";
 import type { Metadata } from "next";
 import { DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
@@ -24,7 +25,7 @@ export default function RootLayout({
       <body
         className={`${jetBrainsMono.className} ${dmSans.className} font-primary bg-[#03000C]`}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

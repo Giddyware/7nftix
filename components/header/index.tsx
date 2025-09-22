@@ -1,8 +1,11 @@
 "use client";
 
+import ChainSwitcher from "@/components/web3/chain-switcher";
 import { Home, Image as ImageIcon, PlusSquare, Wallet } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useAccount, useConnect, useDisconnect } from "wagmi";
+import { coinbaseWallet, injected } from "wagmi/connectors";
 import GradientButton from "../ui/gradient-button";
 
 type NavLink = {
@@ -31,6 +34,21 @@ const navLinks: NavLink[] = [
 
 export default function Header() {
   const pathname = usePathname();
+  const { address, isConnected } = useAccount();
+  const { connect, isPending } = useConnect();
+  const { disconnect } = useDisconnect();
+
+  const handleConnect = async () => {
+    try {
+      if (typeof window !== "undefined" && (window as any).ethereum) {
+        await connect({ connector: injected() });
+      } else {
+        await connect({ connector: coinbaseWallet({ appName: "7NFTix" }) });
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <>
@@ -57,7 +75,25 @@ export default function Header() {
           </ul>
         </nav>
         <div className="hidden md:flex items-center gap-4">
-          <GradientButton className="py-4">Connect Wallet</GradientButton>
+          <ChainSwitcher />
+          {isConnected ? (
+            <div className="flex items-center gap-3">
+              <span className="text-white/70 text-sm hidden sm:inline">
+                {address?.slice(0, 6)}...{address?.slice(-4)}
+              </span>
+              <GradientButton className="py-4" onClick={() => disconnect()}>
+                Disconnect
+              </GradientButton>
+            </div>
+          ) : (
+            <GradientButton
+              className="py-4"
+              onClick={handleConnect}
+              disabled={isPending}
+            >
+              {isPending ? "Connecting..." : "Connect Wallet"}
+            </GradientButton>
+          )}
         </div>
       </header>
 
@@ -78,13 +114,24 @@ export default function Header() {
             </li>
           ))}
           <li>
-            <Link
-              href="#"
-              className="flex flex-col items-center gap-1 text-white/50"
-            >
-              <Wallet className="w-6 h-6" />
-              <span className="text-xs">Wallet</span>
-            </Link>
+            {isConnected ? (
+              <button
+                className="flex flex-col items-center gap-1 text-white"
+                onClick={() => disconnect()}
+              >
+                <Wallet className="w-6 h-6" />
+                <span className="text-xs">Disconnect</span>
+              </button>
+            ) : (
+              <button
+                className="flex flex-col items-center gap-1 text-white/50"
+                onClick={handleConnect}
+                disabled={isPending}
+              >
+                <Wallet className="w-6 h-6" />
+                <span className="text-xs">Wallet</span>
+              </button>
+            )}
           </li>
         </ul>
       </nav>
