@@ -9,7 +9,7 @@ export default function ChainSwitcher() {
   return (
     <select
       aria-label="Select network"
-      className="bg-transparent text-white/80 text-sm border border-white/10 rounded-xl px-3 py-2 focus:outline-none"
+      className="bg-transparent text-white/80 text-sm border border-white/10 rounded-xl px-4 py-4 focus:outline-none"
       value={chainId}
       onChange={(e) => switchChain({ chainId: Number(e.target.value) })}
       disabled={isPending}

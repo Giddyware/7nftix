@@ -1,12 +1,12 @@
 "use client";
 
 import ChainSwitcher from "@/components/web3/chain-switcher";
-import { Home, Image as ImageIcon, PlusSquare, Wallet } from "lucide-react";
+import ConnectWallet from "@/components/web3/connect-wallet";
+import { Home, Image as ImageIcon, PlusSquare } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useAccount, useConnect, useDisconnect } from "wagmi";
-import { coinbaseWallet, injected } from "wagmi/connectors";
-import GradientButton from "../ui/gradient-button";
+import { useEffect, useState } from "react";
+import { useAccount } from "wagmi";
 
 type NavLink = {
   label: string;
@@ -34,68 +34,55 @@ const navLinks: NavLink[] = [
 
 export default function Header() {
   const pathname = usePathname();
-  const { address, isConnected } = useAccount();
-  const { connect, isPending } = useConnect();
-  const { disconnect } = useDisconnect();
+  const { isConnected, address } = useAccount();
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const handleConnect = async () => {
-    try {
-      if (typeof window !== "undefined" && (window as any).ethereum) {
-        await connect({ connector: injected() });
-      } else {
-        await connect({ connector: coinbaseWallet({ appName: "7NFTix" }) });
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
-      <header className="flex justify-between px-5 md:px-12 lg:px-16 py-5 items-center">
-        <div className="text-white font-extrabold text-2xl font-secondary">
-          7NFTix
-        </div>
-        <nav className="hidden md:block">
-          <ul className="flex gap-8">
-            {navLinks.map((link) => (
-              <li key={link.url}>
-                <Link
-                  href={link.url}
-                  className={`text-white font-primary ${
-                    pathname === "#" ? "" : ""
-                  } ${link.url === "#" ? "" : "text-[14px] text-[#3f4253]"} ${
-                    link.isActive && "font-bold"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <div className="hidden md:flex items-center gap-4">
-          <ChainSwitcher />
-          {isConnected ? (
-            <div className="flex items-center gap-3">
-              <span className="text-white/70 text-sm hidden sm:inline">
-                {address?.slice(0, 6)}...{address?.slice(-4)}
-              </span>
-              <GradientButton className="py-4" onClick={() => disconnect()}>
-                Disconnect
-              </GradientButton>
-            </div>
-          ) : (
-            <GradientButton
-              className="py-4"
-              onClick={handleConnect}
-              disabled={isPending}
-            >
-              {isPending ? "Connecting..." : "Connect Wallet"}
-            </GradientButton>
-          )}
+      <header
+        className={`${
+          isScrolled
+            ? "backdrop-blur-lg bg-black/40 border-b border-white/10"
+            : "bg-transparent"
+        } fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300`}
+      >
+        <div className="flex justify-between px-5 md:px-12 lg:px-16 py-5 items-center">
+          <div className="text-white font-extrabold text-2xl font-secondary">
+            7NFTix
+          </div>
+          <nav className="hidden md:block">
+            <ul className="flex gap-8">
+              {navLinks.map((link) => (
+                <li key={link.url}>
+                  <Link
+                    href={link.url}
+                    className={`text-white font-primary ${
+                      pathname === "#" ? "" : ""
+                    } ${link.url === "#" ? "" : "text-[14px] text-[#3f4253]"} ${
+                      link.isActive && "font-bold"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div className="hidden md:flex items-center gap-4">
+            <ChainSwitcher />
+            <ConnectWallet />
+          </div>
         </div>
       </header>
+      {/* Spacer to offset fixed header height */}
+      <div className="h-20 md:h-24" aria-hidden />
 
       {/* Mobile Bottom Navigation */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-lg border-t border-white/10 z-50">
@@ -114,24 +101,7 @@ export default function Header() {
             </li>
           ))}
           <li>
-            {isConnected ? (
-              <button
-                className="flex flex-col items-center gap-1 text-white"
-                onClick={() => disconnect()}
-              >
-                <Wallet className="w-6 h-6" />
-                <span className="text-xs">Disconnect</span>
-              </button>
-            ) : (
-              <button
-                className="flex flex-col items-center gap-1 text-white/50"
-                onClick={handleConnect}
-                disabled={isPending}
-              >
-                <Wallet className="w-6 h-6" />
-                <span className="text-xs">Wallet</span>
-              </button>
-            )}
+            <ConnectWallet trigger="icon" />
           </li>
         </ul>
       </nav>
