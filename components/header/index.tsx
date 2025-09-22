@@ -49,9 +49,9 @@ export default function Header() {
       <header
         className={`${
           isScrolled
-            ? "inset-x-3 sm:inset-x-4 md:inset-x-8 lg:inset-x-12 backdrop-blur-lg bg-black/40 border-b border-white/10 rounded-b-2xl md:rounded-b-3xl overflow-hidden"
-            : "bg-transparent left-0 right-0 w-full"
-        } fixed top-0 z-50 transition-all duration-300`}
+            ? "top-3 sm:top-4 md:top-6 inset-x-3 sm:inset-x-4 md:inset-x-8 lg:inset-x-12 backdrop-blur-lg bg-black/40 border-b border-white/10 rounded-b-2xl md:rounded-b-3xl overflow-hidden"
+            : "top-0 bg-transparent left-0 right-0 w-full"
+        } fixed z-50 transition-all duration-300`}
       >
         <div
           className={`flex justify-between px-5 md:px-12 lg:px-16 items-center transition-all duration-300 ${
