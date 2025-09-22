@@ -1,8 +1,9 @@
 import { createConfig, http } from 'wagmi'
 import { base, mainnet, optimism, sepolia } from 'wagmi/chains'
 import { coinbaseWallet, injected, walletConnect } from 'wagmi/connectors'
+import type { Chain } from 'viem/chains'
 
-export const chains = [mainnet, base, optimism, sepolia]
+export const chains = [mainnet, base, optimism, sepolia] as const satisfies readonly [Chain, ...Chain[]]
 
 export function getWagmiConfig() {
     const wcProjectId = process.env.NEXT_PUBLIC_WC_PROJECT_ID
@@ -11,8 +12,13 @@ export function getWagmiConfig() {
         connectors: [
             injected({ shimDisconnect: true }),
             coinbaseWallet({ appName: '7NFTix' }),
-            ...(wcProjectId ? [walletConnect({ projectId: wcProjectId, showQrModal: true })] : []),
+            ...(wcProjectId ? [walletConnect({ projectId: wcProjectId })] : []),
         ],
-        transports: Object.fromEntries(chains.map((c) => [c.id, http()])),
+        transports: {
+            [mainnet.id]: http(),
+            [base.id]: http(),
+            [optimism.id]: http(),
+            [sepolia.id]: http(),
+        },
     })
 }
