@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import circularArtLogo from "@/assets/circular-art-logo.png";
 import lLogo from "@/assets/l-logo.jpg";
 import openseaLogo from "@/assets/opensea-logo.png";
@@ -10,6 +9,7 @@ import optimisticLoogiesLogo from "@/assets/optimistic-loogies-logo.png";
 import oe40sLogo from "@/assets/oΞ-40s-logo.png";
 import quixoticSquareLogo from "@/assets/quixotic-square-logo.png";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const logos = [
   { src: circularArtLogo, alt: "Circular Art" },

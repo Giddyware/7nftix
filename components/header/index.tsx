@@ -2,6 +2,7 @@
 
 import ChainSwitcher from "@/components/web3/chain-switcher";
 import ConnectWallet from "@/components/web3/connect-wallet";
+import { motion } from "framer-motion";
 import { Home, Image as ImageIcon, PlusSquare } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -46,17 +47,72 @@ export default function Header() {
 
   return (
     <>
-      <header
-        className={`${
-          isScrolled
-            ? "top-3 sm:top-4 md:top-6 inset-x-3 sm:inset-x-4 md:inset-x-8 lg:inset-x-12 backdrop-blur-lg bg-black/40 border-b border-white/10 rounded-b-2xl md:rounded-b-3xl overflow-hidden"
-            : "top-0 bg-transparent left-0 right-0 w-full"
-        } fixed z-50 transition-all duration-300`}
+      <motion.header
+        className="fixed z-50"
+        initial={false}
+        animate={isScrolled ? "scrolled" : "top"}
+        variants={{
+          top: {
+            top: 0,
+            left: 0,
+            right: 0,
+            width: "100%",
+            marginLeft: 0,
+            marginRight: 0,
+            backgroundColor: "rgba(0,0,0,0)",
+            backdropFilter: "blur(0px)",
+            borderBottomLeftRadius: 0,
+            borderBottomRightRadius: 0,
+            borderWidth: 0,
+          },
+          scrolled: {
+            top: 12,
+            left: 12,
+            right: 12,
+            width: "auto",
+            marginLeft: 0,
+            marginRight: 0,
+            backgroundColor: "rgba(0,0,0,0.4)",
+            backdropFilter: "blur(16px)",
+            borderRadius: 16,
+            borderWidth: 1,
+            borderColor: "rgba(255,255,255,0.1)",
+          },
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+          mass: 0.8,
+        }}
+        style={{
+          borderStyle: "solid",
+          borderTopWidth: 0,
+          borderLeftWidth: 0,
+          borderRightWidth: 0,
+          overflow: "hidden",
+        }}
       >
-        <div
-          className={`flex justify-between px-5 md:px-12 lg:px-16 items-center transition-all duration-300 ${
-            isScrolled ? "py-3" : "py-5"
-          }`}
+        <motion.div
+          className="flex justify-between px-5 md:px-12 lg:px-16 items-center"
+          initial={false}
+          animate={isScrolled ? "scrolled" : "top"}
+          variants={{
+            top: {
+              paddingTop: 20,
+              paddingBottom: 20,
+            },
+            scrolled: {
+              paddingTop: 12,
+              paddingBottom: 12,
+            },
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 300,
+            damping: 30,
+            mass: 0.8,
+          }}
         >
           <div className="text-white font-extrabold text-2xl font-secondary">
             7NFTix
@@ -83,12 +139,25 @@ export default function Header() {
             <ChainSwitcher />
             <ConnectWallet />
           </div>
-        </div>
-      </header>
+        </motion.div>
+      </motion.header>
+
       {/* Spacer to offset fixed header height */}
-      <div
-        className={`${isScrolled ? "h-16 md:h-20" : "h-20 md:h-24"}`}
+      <motion.div
         aria-hidden
+        initial={false}
+        animate={isScrolled ? "scrolled" : "top"}
+        variants={{
+          top: { height: 80 }, // h-20
+          scrolled: { height: 64 }, // h-16
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+          mass: 0.8,
+        }}
+        className="md:h-24"
       />
 
       {/* Mobile Bottom Navigation */}

@@ -1,7 +1,7 @@
+import type { Chain } from 'viem/chains'
 import { createConfig, http } from 'wagmi'
 import { base, mainnet, optimism, sepolia } from 'wagmi/chains'
 import { coinbaseWallet, injected, walletConnect } from 'wagmi/connectors'
-import type { Chain } from 'viem/chains'
 
 export const chains = [mainnet, base, optimism, sepolia] as const satisfies readonly [Chain, ...Chain[]]
 
