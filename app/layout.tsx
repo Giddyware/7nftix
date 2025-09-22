@@ -1,4 +1,5 @@
 import Providers from "@/components/providers";
+import "@/lib/web3modal-init";
 import type { Metadata } from "next";
 import { DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
