@@ -49,11 +49,15 @@ export default function Header() {
       <header
         className={`${
           isScrolled
-            ? "backdrop-blur-lg bg-black/40 border-b border-white/10"
-            : "bg-transparent"
-        } fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300`}
+            ? "inset-x-3 sm:inset-x-4 md:inset-x-8 lg:inset-x-12 backdrop-blur-lg bg-black/40 border-b border-white/10 rounded-b-2xl md:rounded-b-3xl overflow-hidden"
+            : "bg-transparent left-0 right-0 w-full"
+        } fixed top-0 z-50 transition-all duration-300`}
       >
-        <div className="flex justify-between px-5 md:px-12 lg:px-16 py-5 items-center">
+        <div
+          className={`flex justify-between px-5 md:px-12 lg:px-16 items-center transition-all duration-300 ${
+            isScrolled ? "py-3" : "py-5"
+          }`}
+        >
           <div className="text-white font-extrabold text-2xl font-secondary">
             7NFTix
           </div>
@@ -82,7 +86,10 @@ export default function Header() {
         </div>
       </header>
       {/* Spacer to offset fixed header height */}
-      <div className="h-20 md:h-24" aria-hidden />
+      <div
+        className={`${isScrolled ? "h-16 md:h-20" : "h-20 md:h-24"}`}
+        aria-hidden
+      />
 
       {/* Mobile Bottom Navigation */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-lg border-t border-white/10 z-50">
