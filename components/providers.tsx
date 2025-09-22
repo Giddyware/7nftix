@@ -1,6 +1,7 @@
 "use client";
 
 import { getWagmiConfig } from "@/lib/wagmi";
+import "@/lib/web3modal-init";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactNode, useState } from "react";
 import { WagmiProvider } from "wagmi";
