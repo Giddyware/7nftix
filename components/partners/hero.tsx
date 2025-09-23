@@ -27,8 +27,8 @@ export default function PartnersHero() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.5 }}
         >
-          We're proud to collaborate with leading companies and projects in the
-          Web3 space.
+          We&apos;re proud to collaborate with leading companies and projects in
+          the Web3 space.
         </motion.p>
       </div>
     </motion.div>
