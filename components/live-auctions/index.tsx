@@ -23,6 +23,7 @@ export default function LiveAuctions() {
           {auctionData.map((auction) => (
             <AuctionCard
               key={auction.id}
+              id={auction.id}
               title={auction.title}
               image={auction.image}
               currentBid={auction.currentBid}
