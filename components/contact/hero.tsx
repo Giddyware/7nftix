@@ -28,7 +28,7 @@ export default function ContactHero() {
           transition={{ delay: 0.4, duration: 0.5 }}
         >
           Have a question, a partnership proposal, or just want to say hello?
-          We'd love to hear from you.
+          We&apos;d love to hear from you.
         </motion.p>
       </div>
     </motion.div>
