@@ -27,8 +27,8 @@ export default function PropertiesInput({
     <div className="space-y-4">
       <Label className="text-white font-bold">Properties</Label>
       <p className="text-sm text-gray-400">
-        Add custom traits to your NFT. These will be displayed on the item's
-        page.
+        Add custom traits to your NFT. These will be displayed on the
+        item&apos;s page.
       </p>
       {properties.map((prop, index) => (
         <div key={index} className="flex items-center gap-2">

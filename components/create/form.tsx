@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
 import { ArrowRight, FilePlus, Lock, Upload } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 import PropertiesInput from "./properties-input";
 
@@ -75,10 +76,11 @@ export default function CreateForm() {
           <div className="p-4 bg-black/20 rounded-2xl border border-white/10 aspect-square">
             <div className="w-full h-full border-2 border-dashed border-gray-500 rounded-lg flex items-center justify-center relative overflow-hidden group">
               {preview ? (
-                <img
+                <Image
                   src={preview}
                   alt="Artwork preview"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               ) : (
                 <div className="text-center text-gray-400">

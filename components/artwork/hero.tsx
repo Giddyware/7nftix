@@ -27,8 +27,8 @@ export default function ArtworkHero() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.5 }}
         >
-          Discover, collect, and sell extraordinary NFTs from the world's top
-          artists.
+          Discover, collect, and sell extraordinary NFTs from the world&apos;s
+          top artists.
         </motion.p>
       </div>
     </motion.div>

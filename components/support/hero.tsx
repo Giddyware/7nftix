@@ -27,8 +27,8 @@ export default function SupportHero() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.5 }}
         >
-          We're here to help. Find answers to your questions or get in touch
-          with our support team.
+          We&apos;re here to help. Find answers to your questions or get in
+          touch with our support team.
         </motion.p>
       </div>
     </motion.div>

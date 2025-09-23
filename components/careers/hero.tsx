@@ -27,7 +27,7 @@ export default function CareersHero() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.5 }}
         >
-          Help us build the future of digital ownership. We're looking for
+          Help us build the future of digital ownership. We&apos;re looking for
           talented individuals to join our mission.
         </motion.p>
       </div>
